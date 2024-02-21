@@ -1,12 +1,23 @@
+import { signup } from '../../api/index.imba'
 
 tag signup
 
 	def handleCreate
-		console.log('creating')
-		console.log(firstName)
-		console.log(lastName)
-		console.log(email)
-		console.log(password)
+		try 
+			const response = await signup({
+				firstName: firstName,
+				lastName: lastName,
+				email: email,
+				password: password,
+			})
+
+			const token = response..data..token
+			const expire = new Date!.getTime! + 1296000000
+			typeof token !== "undefined" and window.localStorage.setItem("Token", JSON.stringify value: "{token}", expires: expire)
+
+		catch error
+			console.log(error)
+		
 
 	css 
 		nav m: 0 p: 0 height: 4.5em border-bottom: 2px solid black bg: #f7d031

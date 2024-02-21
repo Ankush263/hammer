@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "scripts": {
+    "dev": "imba -w server.imba",
+    "build": "imba build server.imba",
+    "preview": "node dist/server.js",
+    "prod": "npx pm2 start dist/server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "mongoose": "^8.1.3"
+  },
+  "devDependencies": {
+    "imba": "^2.0.0-alpha.234"
+  }
+}

@@ -18,8 +18,12 @@ const userSchema = new mongoose.Schema({
 	password:
 		type: String
 		required: [true, "please provide a password"]
+
+	role:
+		type: String
+		enum: ['customer', 'admin']
+		default: 'customer'
 }, timestamps: true)
 
-const User = mongoose.model("User", userSchema)
+export const User = mongoose.model("User", userSchema)
 
-export default User

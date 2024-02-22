@@ -1,2 +1,6 @@
-const catchAsync = do(asyncFunction) return do(req, res, next) asyncFunction(req, res, next).catch do(err) next err
-module.exports = catchAsync
+export const catchAsync = do(asyncFunction)
+	return do(req, res, next) 
+		try 
+				await asyncFunction(req, res, next)
+		catch err 
+				next(err)

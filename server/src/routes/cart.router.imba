@@ -1,6 +1,11 @@
 import express from 'express'
 import { restrictTo, protect } from '../controllers/auth.controller.imba'
-import { addToCart, deleteCart, getMyCart, removeFromCart } from '../controllers/cart.controller.imba'
+import { 
+	addToCart, 
+	deleteCart, 
+	getMyCart, 
+	removeFromCart 
+} from '../controllers/cart.controller.imba'
 
 export const router = express.Router!
 

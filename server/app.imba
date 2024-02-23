@@ -3,6 +3,7 @@ import index from './index.html'
 import { router as user_router } from './src/routes/user.router.imba'
 import { router as product_router } from './src/routes/product.router'
 import { router as cart_router } from './src/routes/cart.router'
+import { router as order_router } from './src/routes/order.router'
 import { globalError } from './src/middlewares/globalError'
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
@@ -21,6 +22,7 @@ app.get '/' do(req, res)
 app.use '/api/v1/user', user_router
 app.use '/api/v1/product', product_router
 app.use '/api/v1/cart', cart_router
+app.use '/api/v1/order', order_router
 
 app.use globalError
 

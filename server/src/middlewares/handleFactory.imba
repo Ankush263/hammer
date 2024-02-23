@@ -55,7 +55,7 @@ export const getAll = do(Model) catchAsync do(req, res, next)
 	if req.params.userId
 		filter = user: [req.params.userId]
 
-	const features = new APIFeatures(Model.find(filter), req.query).filter().sort().limitFields()
+	const features = new APIFeatures(Model.find(filter), req.query).filter().sort().limitFields().limitResults()
 	const doc = await features.query
 
 	res.status(200).json

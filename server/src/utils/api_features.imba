@@ -39,3 +39,11 @@ export class APIFeatures
 			query = query.select("-__v")
 		this
 
+	
+	def limitResults
+		if this.queryString.limit
+			const limit = parseInt this.queryString.limit
+			this.query = this.query.limit limit
+		this
+  
+

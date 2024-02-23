@@ -4,7 +4,7 @@ import {
 	createOrder, 
 	deleteOrder, 
 	getOrdersForSellers, 
-	getOrdersForCustomer 
+	getOrdersForCustomer,
 } from '../controllers/order.controller'
 
 export const router = express.Router!

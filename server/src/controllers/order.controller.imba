@@ -3,6 +3,7 @@ import { deleteOne } from '../middlewares/handleFactory'
 import { Product } from '../models/product.model'
 import { catchAsync } from '../utils/catch_async'
 import { AppError } from '../utils/app_error'
+import { APIFeatures } from '../utils/api_features.imba'
 
 
 export const createOrder = catchAsync do(req, res, next)
@@ -23,6 +24,9 @@ export const createOrder = catchAsync do(req, res, next)
 			return next(new AppError("Product not found with id: {p.product}", 404))
 
 		subTotal += p.quantity * product2.price
+		product2.totalOrdered += p.quantity
+		await product2.save!
+
 	req.body.subTotal = subTotal
 	const order = await Order.create(req.body)
 
@@ -35,12 +39,13 @@ export const deleteOrder = deleteOne Order
 
 
 export const getOrdersForSellers = catchAsync do(req, res, next)
-	const order = await Order.find({seller: req.user.id})
+	const features = new APIFeatures(Order.find({seller: req.user.id}), req.query).filter().sort().limitFields().limitResults()
+	const doc = await features.query
 
-	res.status(200).json(
-		status: 'success',
-		data: order
-	)
+	res.status(200).json
+		status: "success"
+		data: doc
+
 
 
 export const getOrdersForCustomer = catchAsync do(req, res, next)

@@ -5,13 +5,16 @@ import {
 	getAllProducts, 
 	updateProduct, 
 	getOneProduct, 
-	deleteProduct 
+	deleteProduct,
+	aliasTopProducts
 } from '../controllers/product.controller'
 import { protect, restrictTo } from '../controllers/auth.controller'
 
 export const router = express.Router!
 
 router.use protect
+
+router.route('/top-5-products').get aliasTopProducts, getAllProducts
 
 router.route('/').post(restrictTo('admin'), setUser, createProduct).get(getAllProducts)
 

@@ -17,3 +17,10 @@ export const getOneProduct = getOne Product, ''
 export const updateProduct = updateOne Product
 
 export const deleteProduct = deleteOne Product
+
+
+export const aliasTopProducts = do(req, res, next)
+	req.query.limit = '5'
+	req.query.sort = '-totalOrdered';
+	req.query.fields = 'name,price,images'
+	next!

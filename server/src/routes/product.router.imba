@@ -1,12 +1,13 @@
 import express from 'express'
 import { 
 	createProduct, 
-	setUser, 
 	getAllProducts, 
 	updateProduct, 
 	getOneProduct, 
 	deleteProduct,
-	aliasTopProducts
+	aliasTopProducts,
+	uploadImg,
+	deletePhoto
 } from '../controllers/product.controller'
 import { protect, restrictTo } from '../controllers/auth.controller'
 
@@ -16,7 +17,7 @@ router.use protect
 
 router.route('/top-5-products').get aliasTopProducts, getAllProducts
 
-router.route('/').post(restrictTo('admin'), setUser, createProduct).get(getAllProducts)
+router.route('/').post(restrictTo('admin'), uploadImg, createProduct).get(getAllProducts)
 
-router.route('/:id').patch(restrictTo('admin'), updateProduct).delete(restrictTo('admin'), deleteProduct).get(getOneProduct)
+router.route('/:id').patch(restrictTo('admin'), updateProduct).delete(restrictTo('admin'), deletePhoto, deleteProduct).get(getOneProduct)
 

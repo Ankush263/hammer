@@ -1,4 +1,4 @@
-global css body m: 0 p: 0 font-family: sans-serif
+global css body m: 0 p: 0 ff: sans-serif
 
 import "./pages/auth/signup.imba"
 import "./pages/auth/login.imba"

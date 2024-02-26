@@ -29,14 +29,14 @@ tag mid-navbar
 						@click=(showDropdown = !showDropdown) 
 						src="../../../public/svg/cross.svg"
 					>
-				<span> "hammer"
+				<span[cursor: pointer]> "hammer"
 
 				<div.menu-box>
 					<div[w: 220px d: flex jc: space-between ai: center]>
-						<div[w: 30px]>
+						<div[w: 30px cursor: pointer]>
 							<span.small-txt> "SHOP"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
-						<div[w: 140px]>
+						<div[w: 140px cursor: pointer]>
 							<span.small-txt> "ADMIN DASHBOARD"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
 
@@ -45,8 +45,8 @@ tag mid-navbar
 						<img[s:25px ml:0.4em] src="../../../public/svg/search.svg">
 						<input type="text" placeholder="Search...">
 
-					<img[d: none s@786: 15px d@786: block] src="../../../public/svg/usericon.svg">
-					<img[s: 38px s@786: 30px] src="../../../public/svg/shopping-cart.svg">
+					<img[d: none s@786: 15px d@786: block cursor: pointer] src="../../../public/svg/usericon.svg">
+					<img[s: 38px s@786: 30px cursor: pointer] src="../../../public/svg/shopping-cart.svg">
 
 			<div.search_box[display@1024: none]>
 				<img[s:25px ml:0.4em] src="../../../public/svg/search.svg">

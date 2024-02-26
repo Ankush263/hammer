@@ -8,7 +8,7 @@ tag mid-navbar
 			div d: flex jc: space-between ai: center w: 100% h: 2em p@1024: 0.5
 				span fs: 2em fw: 900 font-style: italic
 				.menu-box w: 2.8em display: none display@768: block
-				.small-txt fs: 0.6em fs@786: 0.8em fw: 500 font-style: normal mr: 3px
+				.small-txt fs: 0.6em fs@786: 0.8em fw: 500 font-style: normal mr: 3px td: none c: center
 		.search_box bd: 1px solid black mt: 0.8em rd: 5px py: 4px d: flex ai: center jc: center
 			input h: 100% w: 90% bd: none outline: none
 		.drop-down-box-none display: none
@@ -34,7 +34,7 @@ tag mid-navbar
 				<div.menu-box>
 					<div[w: 220px d: flex jc: space-between ai: center]>
 						<div[w: 30px cursor: pointer]>
-							<span.small-txt> "SHOP"
+							<a.small-txt  route-to='/shop'> "SHOP"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
 						<div[w: 140px cursor: pointer]>
 							<span.small-txt> "ADMIN DASHBOARD"
@@ -54,7 +54,8 @@ tag mid-navbar
 
 		<div .drop-down-box=!showDropdown .drop-down-box-none=showDropdown>
 			<div[d: flex flex-direction: column]>
-				<div.options> "Shop"
+				<div.options> 
+					<a[td: none c: black] route-to='/shop'> "Shop"
 				<div.options> "Cart"
 				<div.options> "Profile"
 				<div.options> "Admin Dashboard"

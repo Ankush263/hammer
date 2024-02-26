@@ -1,3 +1,5 @@
+import '../../components/products/products-component.imba'
+
 tag top-6-product
 
 	css

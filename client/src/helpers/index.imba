@@ -10,3 +10,7 @@ export def toggleDropDown()
 
 export def setDropdown(value)
 	showDropdown = value
+
+export def fetchToken()
+	const token = localStorage.getItem('Token')
+	return JSON.parse(token)..value

@@ -10,9 +10,9 @@ tag login
 			})
 
 			const token = response..data..token
-			console.log(token)
 			const expire = new Date!.getTime! + 1296000000
 			typeof token !== "undefined" and window.localStorage.setItem("Token", JSON.stringify value: "{token}", expires: expire)
+			window.location.replace('/')
 
 		catch error
 			console.log(error)

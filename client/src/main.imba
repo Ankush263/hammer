@@ -4,6 +4,7 @@ import "./pages/auth/signup.imba"
 import "./pages/auth/login.imba"
 import "./pages/main/home.imba"
 import "./pages/main/shop.imba"
+import "./pages/main/single-product.imba"
 
 tag app
 	<self>
@@ -18,6 +19,9 @@ tag app
 
 		<div route='/login'>
 			<login>
+
+		<div route='/product/:id'>
+			<single-product>
 
 imba.mount <app>
 

@@ -17,7 +17,7 @@ tag all-products
 				<div[d: grid gtc: repeat(2, 1fr) gtc@786: repeat(4, 1fr) grid-gap: 25px w: 100% w@786: 90vw]>
 
 					for i in [0...6]
-						<div.sm-img-box>
+						<div.sm-img-box route-to="/product/123">
 							<img[s: 85% rd: 10px] src="../../../public/image/shirt.jpg">
 							<div.desc-text>
 								<span.desc-txt-title> "Boy's shirt - top quality"

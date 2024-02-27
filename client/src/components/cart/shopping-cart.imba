@@ -7,6 +7,7 @@ tag shopping-cart
 		.container bg: #ffffff mih: 100vh w: 100% maw: 480px pos: fixed right: -0.1 top: 0 z-index: 999999
 		.box w: 100% h: 50px d: flex jc: center ai: center
 		.header-txt fs: 12px h: 100% fw: 600 tt: capitalize d: flex jc: center ai: center
+		.cart-btn bd: 2px solid black w: 90% h: 45px d: flex jc: center ai: center px: 5px bg: #f7d031
 	
 	<self>
 		<div.container>
@@ -23,7 +24,7 @@ tag shopping-cart
 			# 	<span[fw: 700 fs: 25px]> "Your cart is empty!"
 			# 	<span[fw: 400 fs: 12px mt: 14px]> "Add your favourite items to your cart."
 
-			<div[h: 80vh overflow: scroll]>
+			<div[h: 60vh overflow: scroll]>
 				<cart-products>
 				<cart-products>
 				<cart-products>
@@ -32,3 +33,9 @@ tag shopping-cart
 				<cart-products>
 				<cart-products>
 				<cart-products>
+
+			<div[mb: 5px mt: 10px d: flex fld: column jc: center ai: center]>
+				<div.cart-btn>
+					<span[fw: 600 fs: 12px]> "CHECKOUT"
+				<div[mt: 15px bgc: white].cart-btn>
+					<span[fw: 600 fs: 12px]> "CONTINUE SHOPPING"

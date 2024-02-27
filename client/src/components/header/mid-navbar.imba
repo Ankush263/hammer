@@ -3,7 +3,8 @@ import {
 	openCart, 
 	showDropdown, 
 	toggleDropDown,
-	setDropdown
+	setDropdown,
+	fetchToken
 } from '../../helpers/index.imba'
 import '../../components/cart/shopping-cart.imba'
 				
@@ -67,6 +68,6 @@ tag mid-navbar
 				<div.options> 
 					<a[td: none c: black] route-to='/shop' @click=setDropdown(yes)> "Shop"
 				<div.options @click=handleCart> "Cart"
-				<div.options> "Profile"
+				if typeof fetchToken() === 'undefined' then <a[td: none c: black] .options route-to='/login'> "Login" else <div.options> "History"
 				<div.options> "Admin Dashboard"
 				

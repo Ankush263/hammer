@@ -34,8 +34,11 @@ tag shopping-cart
 				<cart-products>
 				<cart-products>
 
-			<div[mb: 5px mt: 10px d: flex fld: column jc: center ai: center]>
+			<div[mb: 5px mt: 15px d: flex fld: column jc: center ai: center]>
+				<div[w: 90% d: flex jc: space-between ai: center]>
+					<span[fw: 600 fs: 12px]> "Subtotal (8 items):"
+					<span[fw: 600 fs: 12px]> "$234.60"
 				<div.cart-btn>
 					<span[fw: 600 fs: 12px]> "CHECKOUT"
-				<div[mt: 15px bgc: white].cart-btn>
-					<span[fw: 600 fs: 12px]> "CONTINUE SHOPPING"
+				<div[mt: 10px bgc: white].cart-btn>
+					<a[fw: 600 fs: 12px c: black cursor: pointer td: none] route-to="/shop" @click=handleCart> "CONTINUE SHOPPING"

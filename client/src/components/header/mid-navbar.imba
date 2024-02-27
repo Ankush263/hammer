@@ -65,9 +65,15 @@ tag mid-navbar
 
 		<div .drop-down-box=!showDropdown .drop-down-box-none=showDropdown>
 			<div[d: flex flex-direction: column]>
+				if typeof fetchToken() === 'undefined'  
+					<a[td: none c: black] .options route-to='/login'> "Login" 
+				else 
+					<a.options[td: none c: black] route-to='/'  @click=setDropdown(yes)> "Home"
 				<div.options> 
 					<a[td: none c: black] route-to='/shop' @click=setDropdown(yes)> "Shop"
 				<div.options @click=handleCart> "Cart"
-				if typeof fetchToken() === 'undefined' then <a[td: none c: black] .options route-to='/login'> "Login" else <div.options> "History"
+
+				
+					
 				<div.options> "Admin Dashboard"
 				

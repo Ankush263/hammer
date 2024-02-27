@@ -1,4 +1,5 @@
 import { handleCart } from '../../helpers/index.imba' 
+import "./cart-products.imba"
 
 tag shopping-cart 
 
@@ -18,6 +19,16 @@ tag shopping-cart
 			<div[bg: #f7d031 h: 60px]>
 				<span.header-txt> "Get 2 shirts with 15% off | use code ANKUSH"
 
-			<div[h: 450px d: flex fld: column jc: center ai: center ]>
-				<span[fw: 700 fs: 25px]> "Your cart is empty!"
-				<span[fw: 400 fs: 12px mt: 14px]> "Add your favourite items to your cart."
+			# <div[h: 450px d: flex fld: column jc: center ai: center ]>
+			# 	<span[fw: 700 fs: 25px]> "Your cart is empty!"
+			# 	<span[fw: 400 fs: 12px mt: 14px]> "Add your favourite items to your cart."
+
+			<div[h: 80vh overflow: scroll]>
+				<cart-products>
+				<cart-products>
+				<cart-products>
+				<cart-products>
+				<cart-products>
+				<cart-products>
+				<cart-products>
+				<cart-products>

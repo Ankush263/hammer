@@ -1,5 +1,10 @@
-let showDropdown = yes
-import { handleCart, openCart } from '../../helpers/index.imba'
+import { 
+	handleCart, 
+	openCart, 
+	showDropdown, 
+	toggleDropDown,
+	setDropdown
+} from '../../helpers/index.imba'
 import '../../components/cart/shopping-cart.imba'
 				
 
@@ -24,20 +29,20 @@ tag mid-navbar
 			<div>
 				if showDropdown
 					<img[cursor: pointer s: 20px display@768: none] 
-						@click=(showDropdown = !showDropdown) 
+						@click=toggleDropDown
 						src="../../../public/svg/hamburger-menu.svg"
 					>
 				else
 					<img[cursor: pointer s: 20px display@768: none] 
-						@click=(showDropdown = !showDropdown) 
+						@click=toggleDropDown
 						src="../../../public/svg/cross.svg"
 					>
-				<a[cursor: pointer] route-to='/'> "hammer"
+				<a[cursor: pointer] route-to='/' @click=setDropdown(yes)> "hammer"
 
 				<div.menu-box>
 					<div[w: 220px d: flex jc: space-between ai: center]>
 						<div[w: 30px cursor: pointer]>
-							<a.small-txt  route-to='/shop'> "SHOP"
+							<a.small-txt  route-to='/shop'  @click=setDropdown(yes)> "SHOP"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
 						<div[w: 140px cursor: pointer]>
 							<span.small-txt> "ADMIN DASHBOARD"
@@ -60,7 +65,7 @@ tag mid-navbar
 		<div .drop-down-box=!showDropdown .drop-down-box-none=showDropdown>
 			<div[d: flex flex-direction: column]>
 				<div.options> 
-					<a[td: none c: black] route-to='/shop'> "Shop"
+					<a[td: none c: black] route-to='/shop' @click=setDropdown(yes)> "Shop"
 				<div.options @click=handleCart> "Cart"
 				<div.options> "Profile"
 				<div.options> "Admin Dashboard"

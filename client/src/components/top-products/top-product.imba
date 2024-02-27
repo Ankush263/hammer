@@ -19,7 +19,7 @@ tag top-6-product
 
 					for i in [0...6]
 						<div.sm-img-box>
-							<img[s: 75%] src="../../../public/image/shirt.jpg">
+							<img[s: 85% rd: 10px] src="../../../public/image/shirt.jpg">
 							<div.desc-text>
 								<span.desc-txt-title> "Boy's shirt - top quality"
 								<span.desc-txt-light> "$ 13"

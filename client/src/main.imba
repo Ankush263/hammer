@@ -5,6 +5,8 @@ import "./pages/auth/login.imba"
 import "./pages/main/home.imba"
 import "./pages/main/shop.imba"
 import "./pages/main/single-product.imba"
+import "./pages/main/checkout.imba"
+import "./pages/main/order-success.imba"
 
 tag app
 	<self>
@@ -19,6 +21,12 @@ tag app
 
 		<div route='/login'>
 			<login>
+
+		<div route='/checkout'>
+			<checkout>
+
+		<div route='/order-success'>
+			<order-success>
 
 		<div route='/product/:id'>
 			<single-product>

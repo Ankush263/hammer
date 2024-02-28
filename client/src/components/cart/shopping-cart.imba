@@ -8,6 +8,7 @@ tag shopping-cart
 		.box w: 100% h: 50px d: flex jc: center ai: center
 		.header-txt fs: 12px h: 100% fw: 600 tt: capitalize d: flex jc: center ai: center
 		.cart-btn bd: 2px solid black w: 90% h: 45px d: flex jc: center ai: center px: 5px bg: #f7d031
+		.link-txt fw: 600 fs: 12px c: black cursor: pointer td: none
 	
 	<self>
 		<div.container>
@@ -39,6 +40,6 @@ tag shopping-cart
 					<span[fw: 600 fs: 12px]> "Subtotal (8 items):"
 					<span[fw: 600 fs: 12px]> "$234.60"
 				<div.cart-btn>
-					<span[fw: 600 fs: 12px]> "CHECKOUT"
+					<a.link-txt route-to="/checkout" @click=handleCart> "CHECKOUT"
 				<div[mt: 10px bgc: white].cart-btn>
-					<a[fw: 600 fs: 12px c: black cursor: pointer td: none] route-to="/shop" @click=handleCart> "CONTINUE SHOPPING"
+					<a.link-txt route-to="/shop" @click=handleCart> "CONTINUE SHOPPING"

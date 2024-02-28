@@ -7,6 +7,7 @@ import "./pages/main/shop.imba"
 import "./pages/main/single-product.imba"
 import "./pages/main/checkout.imba"
 import "./pages/main/order-success.imba"
+import "./pages/admin/dashboard.imba"
 
 tag app
 	<self>
@@ -27,6 +28,9 @@ tag app
 
 		<div route='/order-success'>
 			<order-success>
+
+		<div route='/dashboard'>
+			<dashboard>
 
 		<div route='/product/:id'>
 			<single-product>

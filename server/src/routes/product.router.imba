@@ -7,7 +7,8 @@ import {
 	deleteProduct,
 	aliasTopProducts,
 	uploadImg,
-	deletePhoto
+	deletePhoto,
+	totalListedProduct
 } from '../controllers/product.controller'
 import { protect, restrictTo } from '../controllers/auth.controller'
 
@@ -16,6 +17,7 @@ export const router = express.Router!
 router.use protect
 
 router.route('/top-5-products').get aliasTopProducts, getAllProducts
+router.route('/myProducts').get restrictTo('admin'), totalListedProduct
 
 router.route('/').post(restrictTo('admin'), uploadImg, createProduct).get(getAllProducts)
 

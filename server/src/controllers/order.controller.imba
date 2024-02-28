@@ -47,7 +47,6 @@ export const getOrdersForSellers = catchAsync do(req, res, next)
 		data: doc
 
 
-
 export const getOrdersForCustomer = catchAsync do(req, res, next)
 	const order = await Order.find({user: req.user.id})
 
@@ -56,3 +55,16 @@ export const getOrdersForCustomer = catchAsync do(req, res, next)
 		data: order
 	)
 
+
+export const getTotalSell = catchAsync do(req, res, next)
+	const orders = await Order.find({seller: req.user.id})
+	let total = 0;
+	
+	for order in orders
+		total += order.subTotal
+
+	res.status(200).json(
+		status: 'success'
+		data: total
+	)
+	

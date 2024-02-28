@@ -68,3 +68,12 @@ export const aliasTopProducts = do(req, res, next)
 	req.query.sort = '-totalOrdered';
 	req.query.fields = 'name,price,images'
 	next!
+
+export const totalListedProduct = catchAsync do(req, res, next)
+	const product = await Product.find({user: req.user.id})
+
+	res.status(200).json(
+		status: 'success'
+		result: product.length
+		data: product
+	)

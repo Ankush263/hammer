@@ -17,7 +17,7 @@ tag mid-navbar
 			div d: flex jc: space-between ai: center w: 100% h: 2em p@1024: 0.5
 				a fs: 2em fw: 900 font-style: italic td: none color: black
 				.menu-box w: 2.8em display: none display@768: block
-				.small-txt fs: 0.6em fs@786: 0.8em fw: 500 font-style: normal mr: 3px td: none c: center
+				.small-txt fs: 0.6em fs@768: 0.8em fw: 500 font-style: normal mr: 3px td: none c: center
 		.search_box bd: 1px solid black mt: 0.8em rd: 5px py: 4px d: flex ai: center jc: center
 			input h: 100% w: 90% bd: none outline: none
 		.drop-down-box-none display: none
@@ -49,13 +49,13 @@ tag mid-navbar
 							<span.small-txt> "ADMIN DASHBOARD"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
 
-				<div[w: 38px w@786: 60px w@1024: 20em d: flex jc: space-between ai: center]>
+				<div[w: 38px w@768: 60px w@1024: 20em d: flex jc: space-between ai: center]>
 					<div.search_box[display: none display@1024: flex  w@1024: 250px mt: 0]>
 						<img[s:25px ml:0.4em] src="../../../public/svg/search.svg">
 						<input type="text" placeholder="Search...">
 
-					<img[d: none s@786: 15px d@786: block cursor: pointer] src="../../../public/svg/usericon.svg">
-					<img[s: 38px s@786: 30px cursor: pointer] @click=handleCart src="../../../public/svg/shopping-cart.svg">
+					<img[d: none s@768: 15px d@768: block cursor: pointer] src="../../../public/svg/usericon.svg">
+					<img[s: 38px s@768: 30px cursor: pointer] @click=handleCart src="../../../public/svg/shopping-cart.svg">
 					if openCart
 						<shopping-cart>
 

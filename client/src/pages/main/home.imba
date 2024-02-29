@@ -13,7 +13,7 @@ tag five-star
 tag home
 
 	css
-		.home-container bg: #f7d031 h: 120px mt: -5px d: flex fld: column ai: center d@786: none
+		.home-container bg: #f7d031 h: 120px mt: -5px d: flex fld: column ai: center d@768: none
 		.big-btn bd: 2px solid black h: 45px mt: 10px w: 89% d: flex jc: center ai: center bg: white
 		span fs: 15px fw: 500
 		.small-btn-box mt: 10px h: 45px w: 89% d: flex jc: space-between
@@ -31,7 +31,7 @@ tag home
 
 		<div>
 			<img[w: 100%] src="../../../public/image/home-dress.jpg">
-			<div.small-btn-box-top[d: none d@786: flex bd: 1px solid blue]>
+			<div.small-btn-box-top[d: none d@768: flex bd: 1px solid blue]>
 				<div.btn-box>
 					<div.btn>
 						<span> "SHOP"
@@ -47,7 +47,7 @@ tag home
 					<div.btn>
 						<span> "CART"
 
-			<img[w: 100% transform: rotate(180deg) d@786: none] src="../../../public/image/wave-bg.png">
+			<img[w: 100% transform: rotate(180deg) d@768: none] src="../../../public/image/wave-bg.png">
 			<div.top-seller-container>
 
 				<top-6-product>

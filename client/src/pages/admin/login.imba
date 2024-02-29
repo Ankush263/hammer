@@ -33,7 +33,7 @@ tag admin-login
 		<nav> 
 			<div>
 		<section>
-			<span.header-txt> "Login"
+			<span.header-txt> "Admin Login"
 			<div.login-box>
 
 				<div.input-box>

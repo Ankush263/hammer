@@ -1,4 +1,8 @@
 import { signup } from '../../api/index.imba'
+import { show-notification } from "../../components/notification/notification.imba"
+
+let successNotification = no
+let errorNotification = no
 
 tag signup
 
@@ -11,13 +15,17 @@ tag signup
 				password: password,
 			})
 
+			successNotification = yes
 			const token = response..data..token
 			const expire = new Date!.getTime! + 1296000000
 			typeof token !== "undefined" and window.localStorage.setItem("Token", JSON.stringify value: "{token}", expires: expire)
 			window.location.replace('/')
+			setTimeout(&, 1000) do successNotification = no
 
 		catch error
+			errorNotification = yes
 			console.log(error)
+			setTimeout(&, 1000) do errorNotification = no
 		
 
 	css 
@@ -58,4 +66,10 @@ tag signup
 					<button @click=handleCreate> "Create"
 
 				<a.bottom-txt route-to='/login'> "Login to your account"
+
+				if errorNotification  
+					show-notification('error', errorNotification, "Error while sign up")
+				else 
+					show-notification('success', successNotification, "You have successfully signed up")
+				
 

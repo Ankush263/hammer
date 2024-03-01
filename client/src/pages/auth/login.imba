@@ -3,10 +3,12 @@ import { show-notification } from "../../components/notification/notification.im
 
 let successNotification = no
 let errorNotification = no
+let startLoading = no
 
 tag login
 
 	def handleCreate
+		startLoading = yes
 		try 
 			const response = await login({
 				email: email,
@@ -18,10 +20,12 @@ tag login
 			const expire = new Date!.getTime! + 1296000000
 			typeof token !== "undefined" and window.localStorage.setItem("Token", JSON.stringify value: "{token}", expires: expire)
 			
+			startLoading = no
 			window.location.replace('/')
 			setTimeout(&, 1000) do successNotification = no
 		catch error
 			errorNotification = yes
+			startLoading = no
 			console.log(error)
 			setTimeout(&, 1000) do errorNotification = no
 
@@ -53,7 +57,8 @@ tag login
 					<input type="password" bind=password placeholder="Enter Password" />
 
 				<div.btn>
-					<button @click=handleCreate> "Sign In"
+					<button @click=handleCreate> 
+						!startLoading ? <span> "Log In" : <img[s: 25px] src="../../../public/image/loading.webp">
 
 				<a.bottom-txt route-to='/signup'> "Create account"
 

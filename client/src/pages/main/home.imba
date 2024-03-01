@@ -3,6 +3,15 @@ import "../../components/header/mid-navbar.imba"
 import "../../components/header/bottom-navbar.imba"
 import "../../components/footer/footer.imba"
 import "../../components/top-products/top-product.imba"
+import { fetchToken }  from "../../helpers/index.imba"
+
+
+fetch()
+
+def fetch
+	if fetchToken() === "" || fetchToken() === undefined
+		imba.router.url.href = "http://{imba.router.url.host}/login"
+
 
 tag five-star
 	<self>
@@ -63,8 +72,3 @@ tag home
 
 			<footer-comp>
 				
-
-
-					
-					
-			

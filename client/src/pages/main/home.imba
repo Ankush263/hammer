@@ -3,14 +3,11 @@ import "../../components/header/mid-navbar.imba"
 import "../../components/header/bottom-navbar.imba"
 import "../../components/footer/footer.imba"
 import "../../components/top-products/top-product.imba"
-import { fetchToken }  from "../../helpers/index.imba"
+import { goto }  from "../../helpers/index.imba"
+import { getTopSixProducts } from "../../api/index.imba"
 
 
-fetch()
-
-def fetch
-	if fetchToken() === "" || fetchToken() === undefined
-		imba.router.url.href = "http://{imba.router.url.host}/login"
+goto("/login")
 
 
 tag five-star

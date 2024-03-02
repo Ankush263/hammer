@@ -40,7 +40,10 @@ export const deleteOrder = deleteOne Order
 
 export const getOrdersForSellers = catchAsync do(req, res, next)
 	const features = new APIFeatures(Order.find({seller: req.user.id}), req.query).filter().sort().limitFields().limitResults()
-	const doc = await features.query
+	const doc = await features.query.populate(
+		path: 'seller',
+		select: 'email'
+	)
 
 	res.status(200).json
 		status: "success"
@@ -48,7 +51,7 @@ export const getOrdersForSellers = catchAsync do(req, res, next)
 
 
 export const getOrdersForCustomer = catchAsync do(req, res, next)
-	const order = await Order.find({user: req.user.id})
+	const order = await Order.find({ user: req.user.id })
 
 	res.status(200).json(
 		status: 'success',

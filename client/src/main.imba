@@ -11,6 +11,7 @@ import "./pages/admin/dashboard.imba"
 import "./pages/admin/upload.imba"
 import "./pages/admin/login.imba"
 import "./pages/admin/signup.imba"
+import "./pages/admin/signup.imba"
 
 tag app
 	<self>
@@ -31,6 +32,9 @@ tag app
 
 		<div route='/admin-login'>
 			<admin-login>
+
+		<div route='/admin-signup'>
+			<admin-signup>
 
 		<div route='/checkout'>
 			<checkout>

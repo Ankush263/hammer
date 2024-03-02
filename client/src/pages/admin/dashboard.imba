@@ -1,9 +1,36 @@
 import "../../components/order/order-history.imba"
 import "../../components/chart/chart.imba"
+import { checkUser, fetchToken } from "../../helpers/index.imba"
+import { 
+	getTotalSell, 
+	getTotalNumberOfListedProduct, 
+	getOrders 
+} from "../../api/index.imba"
+
+let orderData = []
+let totalSell = 0
+let totalProduct = 0
 
 tag dashboard
 
-	
+	@autorun 
+	def fetch()
+		try
+			const myRole = await checkUser!
+			if myRole !== "admin"
+				window.location.replace("http://{imba.router.url.host}/admin-login")
+			else
+				const sell = await getTotalSell(fetchToken())
+				const total = await getTotalNumberOfListedProduct(fetchToken())
+				const orders = await getOrders(fetchToken())
+
+				totalSell = sell.data.data
+				totalProduct = total.data.data
+				orderData = orders.data.data
+				imba.commit!
+		catch error
+			console.log error
+			
 
 	css
 		.header h: 50px d: flex jc: center ai: center bg: #f7d031 w: 100vw
@@ -32,37 +59,23 @@ tag dashboard
 
 				<div[d: flex fld: column]>
 					<div.green-box>
-						<span[fs: 16px fw: 600]> "Total Sells: $ 2351.93"
+						<span[fs: 16px fw: 600]> "Total Sells: $ {totalSell}"
 
 					<div.yellow-box>
-						<span[fs: 16px fw: 600]> "Total Listed Product: 34"
+						<span[fs: 16px fw: 600]> "Total Listed Product: {totalProduct}"
 
 			
 			<div.table-head>
 				<span.title> "Email"
 				<span.title> "Created At"
-				<span.title> "Amount"
+				<span.title> "State"
 				<span.title> "Total"
 
 			<div.order-history-box>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
-				<div[w: 90% mt: 10px]>
-					<order-history>
+				for order in orderData
+					<div[w: 90% mt: 10px]>
+						<order-history name=order.seller.email total=order.subTotal state=order.orderState createdAt=order.createdAt >
+
 				
 			<button>
 				<span[fw: 600 fs: 15px] route-to='/product-upload'> "Upload Product"

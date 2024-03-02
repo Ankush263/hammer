@@ -1,6 +1,17 @@
 import '../../components/products/products-component.imba'
+import { getTopSixProducts } from "../../api/index.imba"
+import { fetchToken } from "../../helpers/index.imba"
+
+let topProducts = []
 
 tag top-6-product
+
+	@autorun
+	def fetch()
+		const res = await getTopSixProducts(fetchToken())
+		topProducts = res.data.data
+		imba.commit!
+
 
 	css
 		.top-seller-header fs: 22px fw: 800 mb: 50px mt: 50px d: flex fld: column ai: center
@@ -17,11 +28,11 @@ tag top-6-product
 				<span.top-seller-header-txt> "Meet Our Top Sellers"
 				<div[d: grid gtc: repeat(2, 1fr) gtc@768: repeat(3, 1fr) grid-gap: 25px w: 100% w@768: 100%]>
 
-					for i in [0...6]
+					for i in topProducts
 						<div.sm-img-box>
-							<img[s: 85% rd: 10px] src="../../../public/image/shirt.jpg">
+							<img[s: 85% rd: 10px] src="{i.image}">
 							<div.desc-text>
-								<span.desc-txt-title> "Boy's shirt - top quality"
-								<span.desc-txt-light> "$ 13"
+								<span.desc-txt-title> "{i.name}"
+								<span.desc-txt-light> "$ {i.price}"
 
 								

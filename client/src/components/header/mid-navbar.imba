@@ -45,7 +45,7 @@ tag mid-navbar
 						<div[w: 30px cursor: pointer]>
 							<a.small-txt  route-to='/shop'  @click=setDropdown(yes)> "SHOP"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
-						<div[w: 140px cursor: pointer]>
+						<div[w: 140px cursor: pointer] route-to="/dashboard">
 							<span.small-txt> "ADMIN DASHBOARD"
 							<img[s:10px] src="../../../public/svg/plus-icon.svg">
 

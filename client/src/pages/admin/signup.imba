@@ -1,23 +1,36 @@
 import { signup } from '../../api/index.imba'
+import { show-notification } from "../../components/notification/notification.imba"
+
+let successNotification = no
+let errorNotification = no
+let startLoading = no
 
 tag admin-signup
 
 	def handleCreate
+		startLoading = yes
 		try 
 			const response = await signup({
 				firstName: firstName,
 				lastName: lastName,
 				email: email,
 				password: password,
+				role: "admin"
 			})
 
+			successNotification = yes
 			const token = response..data..token
 			const expire = new Date!.getTime! + 1296000000
 			typeof token !== "undefined" and window.localStorage.setItem("Token", JSON.stringify value: "{token}", expires: expire)
-			window.location.replace('/')
-
+			
+			startLoading = no
+			window.location.replace('/dashboard')
+			setTimeout(&, 1000) do successNotification = no
 		catch error
+			startLoading = no
+			errorNotification = yes
 			console.log(error)
+			setTimeout(&, 1000) do errorNotification = no
 		
 
 	css 
@@ -36,7 +49,7 @@ tag admin-signup
 		<nav> 
 			<div>
 		<section>
-			<span.header-txt> "Create Account For Admin"
+			<span.header-txt> "Create an Admin account"
 			<div.signup-box>
 				<div.input-box>
 					<label> "First Name:"
@@ -55,7 +68,13 @@ tag admin-signup
 					<input type="password" bind=password placeholder="Enter Password" />
 
 				<div.btn>
-					<button @click=handleCreate> "Create"
+					<button @click=handleCreate> 
+						!startLoading ? <span> "Create" : <img[s: 25px] src="../../../public/image/loading.webp">
 
-				<a.bottom-txt route-to='/login'> "Login to your account"
+				<a.bottom-txt route-to='/admin-login'> "Login to your account"
+
+				if errorNotification  
+					show-notification('error', errorNotification, "Error while sign up")
+				else 
+					show-notification('success', successNotification, "You have successfully signed up")
 

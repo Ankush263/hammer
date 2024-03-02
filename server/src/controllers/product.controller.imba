@@ -64,9 +64,9 @@ export const deleteProduct = deleteOne Product
 
 
 export const aliasTopProducts = do(req, res, next)
-	req.query.limit = '5'
+	req.query.limit = '6'
 	req.query.sort = '-totalOrdered';
-	req.query.fields = 'name,price,images'
+	req.query.fields = 'name,price,image'
 	next!
 
 export const totalListedProduct = catchAsync do(req, res, next)
@@ -77,3 +77,12 @@ export const totalListedProduct = catchAsync do(req, res, next)
 		result: product.length
 		data: product
 	)
+
+export const totalNumberOfListedProduct = catchAsync do(req, res, next)
+	const product = await Product.find({user: req.user.id})
+
+	res.status(200).json(
+		status: 'success'
+		data: product.length
+	)
+

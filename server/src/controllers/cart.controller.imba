@@ -7,6 +7,7 @@ import { deleteOne } from '../middlewares/handleFactory'
 
 export const addToCart = catchAsync do(req, res, next)
 	const { productId } = req.body
+	const { quantity } = req.body
 	const product = await Product.findById productId
 
 	if !product
@@ -23,13 +24,13 @@ export const addToCart = catchAsync do(req, res, next)
 	const existingProducts = cart.products.find(do(item) product and item..product..toString() === productId)
 
 	if existingProducts
-		existingProducts.quantity += 1
+		quantity ? existingProducts.quantity += quantity : existingProducts.quantity += 1
 		existingProducts.total = existingProducts.quantity * product.price
 	else
 		const newProduct = {
 			product: productId,
-			quantity: 1,
-			total: product.price
+			quantity: quantity ? quantity : 1,
+			total: quantity ? quantity * product.price : product.price
 		}
 		cart.products.push(newProduct)
 
@@ -74,7 +75,7 @@ export const deleteCart = deleteOne Cart
 export const getMyCart = catchAsync do(req, res, next)
 	const cart = await Cart.find({ user: req.user.id }).populate(
 		path: 'products.product'
-		select: 'name description images price'
+		select: 'name image price'
 	)
 	res.status(200).json(
 		status: 'success'

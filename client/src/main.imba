@@ -48,8 +48,8 @@ tag app
 		<div route='/product-upload'>
 			<product-upload>
 
-		<div route='/product/:id'>
-			<single-product>
+		<div>
+			<single-product route='/product/:id'>
 
 imba.mount <app>
 

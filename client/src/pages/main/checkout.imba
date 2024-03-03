@@ -1,4 +1,20 @@
+import { fetchToken } from "../../helpers/index.imba"
+import { getMyCart, createOrder } from "../../api/index.imba"
+
 tag checkout
+
+	def handleCreateOrder
+		try
+			let allProducts = []
+			const myCart = (await getMyCart(fetchToken()))..data.data[0]
+			for product in myCart.products
+				allProducts.push({ product: product.product._id, quantity: product.quantity })
+			
+			await createOrder fetchToken!, { products: allProducts }
+			window.location.replace("http://{imba.router.url.host}/order-success")
+		catch error
+			console.log error
+
 
 	css
 		.btn-container h: 200px d: flex fld: column jc: space-around ai: center mt: 200px
@@ -13,7 +29,7 @@ tag checkout
 			<span[fs: 18px]> "Choose your payment method"
 			<div.btn>
 				<span> "Cash On Delivery "
-				<img[s: 30px ml: auto] route-to='/order-success' src="../../../public/svg/right.svg" >
+				<img[s: 30px ml: auto] @click=handleCreateOrder src="../../../public/svg/right.svg" >
 
 			<div.btn>
 				<span> "Credit / Debit Card "

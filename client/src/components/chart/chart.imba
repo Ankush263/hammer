@@ -22,6 +22,7 @@ tag chart
 			console.log error
 
 	def calculeteYAxis(maxValue)
+		yAxis = []
 		const d = maxValue / 7
 		for i in [0...maxValue + 7]
 			yAxis.push Math.floor(i)

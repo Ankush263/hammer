@@ -23,6 +23,8 @@ tag mid-navbar
 		.drop-down-box-none display: none
 		.drop-down-box bg: #ffffff w: 100% z-index: 9999 pos: relative  
 		.options bdb: 2px solid black p: 1em fs: 15px fw: 500
+		.user d: none s@768: 15px d@768: block cursor: pointer
+		.cart s: 38px s@768: 30px cursor: pointer
 
 
 	<self>
@@ -54,8 +56,8 @@ tag mid-navbar
 						<img[s:25px ml:0.4em] src="../../../public/svg/search.svg">
 						<input type="text" placeholder="Search...">
 
-					<img[d: none s@768: 15px d@768: block cursor: pointer] src="../../../public/svg/usericon.svg">
-					<img[s: 38px s@768: 30px cursor: pointer] @click=handleCart src="../../../public/svg/shopping-cart.svg">
+					<img.user route-to="/login" src="../../../public/svg/usericon.svg">
+					<img.cart @click=handleCart src="../../../public/svg/shopping-cart.svg">
 					if openCart
 						<shopping-cart>
 
@@ -68,12 +70,9 @@ tag mid-navbar
 				if typeof fetchToken() === 'undefined'  
 					<a[td: none c: black] .options route-to='/login'> "Login" 
 				else 
-					<a.options[td: none c: black] route-to='/'  @click=setDropdown(yes)> "Home"
+					<a.options[td: none c: black] route-to='/' @click=setDropdown(yes)> "Home"
 				<div.options> 
 					<a[td: none c: black] route-to='/shop' @click=setDropdown(yes)> "Shop"
-				<div.options @click=handleCart> "Cart"
-
-				
-					
-				<div.options> "Admin Dashboard"
+				<div.options @click=handleCart> "Cart"	
+				<div.options route-to='/dashboard'> "Admin Dashboard"
 				

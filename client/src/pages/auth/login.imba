@@ -45,7 +45,7 @@ tag login
 		<nav> 
 			<div>
 		<section>
-			<span.header-txt> "Login"
+			<span.header-txt> "Login As Customer"
 			<div.login-box>
 
 				<div.input-box>

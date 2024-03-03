@@ -44,7 +44,7 @@ tag signup
 		<nav> 
 			<div>
 		<section>
-			<span.header-txt> "Create Account"
+			<span.header-txt> "Create Customer Account"
 			<div.signup-box>
 				<div.input-box>
 					<label> "First Name:"

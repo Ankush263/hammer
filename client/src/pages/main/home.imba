@@ -3,8 +3,7 @@ import "../../components/header/mid-navbar.imba"
 import "../../components/header/bottom-navbar.imba"
 import "../../components/footer/footer.imba"
 import "../../components/top-products/top-product.imba"
-import { goto }  from "../../helpers/index.imba"
-import { getTopSixProducts } from "../../api/index.imba"
+import { goto, handleCart }  from "../../helpers/index.imba"
 
 
 goto("/login")
@@ -40,17 +39,17 @@ tag home
 			<div.small-btn-box-top[d: none d@768: flex bd: 1px solid blue]>
 				<div.btn-box>
 					<div.btn>
-						<span> "SHOP"
-					<div.btn>
+						<span route-to="/shop"> "SHOP"
+					<div.btn @click=handleCart>
 						<span> "CART"
 
 			<div.home-container>
 				<div.big-btn>
-					<span> "START BUSINESS WITH US"
+					<span route-to="/dashboard"> "START BUSINESS WITH US"
 				<div.small-btn-box>
 					<div.btn>
-						<span> "SHOP"
-					<div.btn>
+						<span route-to="/shop"> "SHOP"
+					<div.btn @click=handleCart>
 						<span> "CART"
 
 			<img[w: 100% transform: rotate(180deg) d@768: none] src="../../../public/image/wave-bg.png">

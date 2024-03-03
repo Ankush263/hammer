@@ -1,7 +1,20 @@
-import { handleCart } from '../../helpers/index.imba' 
+import { handleCart, fetchToken } from '../../helpers/index.imba' 
+import { getMyCart } from "../../api/index.imba"
 import "./cart-products.imba"
 
+let cart = {}
+let items = []
+
 tag shopping-cart 
+
+	@autorun
+	def fetch()
+		try
+			cart = (await getMyCart(fetchToken())).data.data[0]
+			items = cart.products
+			imba.commit!
+		catch error
+			console.log error
 
 	css
 		.container bg: #ffffff mih: 100vh w: 100% maw: 480px pos: fixed right: -0.1 top: 0 z-index: 999999
@@ -21,24 +34,21 @@ tag shopping-cart
 			<div[bg: #f7d031 h: 60px]>
 				<span.header-txt> "Get 2 shirts with 15% off | use code ANKUSH"
 
-			# <div[h: 450px d: flex fld: column jc: center ai: center ]>
-			# 	<span[fw: 700 fs: 25px]> "Your cart is empty!"
-			# 	<span[fw: 400 fs: 12px mt: 14px]> "Add your favourite items to your cart."
-
 			<div[h: 60vh overflow: scroll]>
-				<cart-products>
-				<cart-products>
-				<cart-products>
-				<cart-products>
-				<cart-products>
-				<cart-products>
-				<cart-products>
-				<cart-products>
+				if items and items.length > 0
+					for product in items
+						<cart-products fetch=fetch id=product.product._id quantity=product.quantity price=product.total image=product.product.image name=product.product.name>
+				elif items and items.length === 0
+					<div[h: 450px d: flex fld: column jc: center ai: center ]>
+						<span[fw: 700 fs: 25px]> "Your cart is empty!"
+						<span[fw: 400 fs: 12px mt: 14px]> "Add your favourite items to your cart."
+				else
+					<span> "Loading cart items..."
 
 			<div[mb: 5px mt: 15px d: flex fld: column jc: center ai: center]>
 				<div[w: 90% d: flex jc: space-between ai: center]>
-					<span[fw: 600 fs: 12px]> "Subtotal (8 items):"
-					<span[fw: 600 fs: 12px]> "$234.60"
+					<span[fw: 600 fs: 12px]> "Subtotal ({items.length} items):"
+					<span[fw: 600 fs: 12px]> "${cart.subTotal}"
 				<div.cart-btn>
 					<a.link-txt route-to="/checkout" @click=handleCart> "CHECKOUT"
 				<div[mt: 10px bgc: white].cart-btn>

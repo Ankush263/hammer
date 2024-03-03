@@ -33,4 +33,7 @@ export const getTopSixProducts = do(_token) return PRODUCT_API.get '/top-6-produ
 export const getAllProducts = do(_token) return PRODUCT_API.get '/', headers:
 	Authorization: "Bearer {_token}"
 
-# export const get
+export const get7DaysStat = do(_token) return ORDER_API.get '/7-days-stat', headers:
+	Authorization: "Bearer {_token}"
+
+	

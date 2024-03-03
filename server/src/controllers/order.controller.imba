@@ -4,6 +4,7 @@ import { Product } from '../models/product.model'
 import { catchAsync } from '../utils/catch_async'
 import { AppError } from '../utils/app_error'
 import { APIFeatures } from '../utils/api_features.imba'
+import mongoose from 'mongoose'
 
 
 export const createOrder = catchAsync do(req, res, next)
@@ -70,4 +71,34 @@ export const getTotalSell = catchAsync do(req, res, next)
 		status: 'success'
 		data: total
 	)
+
 	
+export const getSevenDaysStat = catchAsync do(req, res, next)
+	const today = new Date
+	const sevenDaysAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000)
+	const stats = await Order.aggregate([
+		{$match:
+			seller: new mongoose.Types.ObjectId(req.user.id),
+			createdAt:
+				$gte: sevenDaysAgo
+				$lte: today}
+		
+		{$group:
+			_id:
+				$dateToString:
+					format: "%Y-%m-%d"
+					date: "$createdAt"
+			totalAmount:
+				$sum: "$subTotal"}
+
+		{$sort:
+			_id: 1}
+	])
+	
+	res.status(200).json(
+		status: 'success'
+		data: stats
+	)
+
+
+

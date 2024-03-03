@@ -4,7 +4,7 @@ import { checkUser, fetchToken } from "../../helpers/index.imba"
 import { 
 	getTotalSell, 
 	getTotalNumberOfListedProduct, 
-	getOrders 
+	getOrders
 } from "../../api/index.imba"
 
 let orderData = []

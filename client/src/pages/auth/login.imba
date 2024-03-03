@@ -10,6 +10,8 @@ tag login
 	def handleCreate
 		startLoading = yes
 		try 
+			setTimeout(&, 1000) do window.alert("Since this application deployed on a free service, it might take 2 - 4 mins to fetch the data. sit back and relax☺️☺️")
+
 			const response = await login({
 				email: email,
 				password: password,

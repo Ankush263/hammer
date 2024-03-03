@@ -15,42 +15,41 @@ import "./pages/admin/signup.imba"
 
 tag app
 	<self>
-		<imba.HashHistory>
-			<div route="/">
-				<home>
+		<div route="/">
+			<home>
 
-			<div route="/shop">
-				<shop>
+		<div route="/shop">
+			<shop>
 
-			<div route='/signup'>
-				<signup>
+		<div route='/signup'>
+			<signup>
 
-			<div route='/admin-signup'>
-				<admin-signup>
+		<div route='/admin-signup'>
+			<admin-signup>
 
-			<div route='/login'>
-				<login>
+		<div route='/login'>
+			<login>
 
-			<div route='/admin-login'>
-				<admin-login>
+		<div route='/admin-login'>
+			<admin-login>
 
-			<div route='/admin-signup'>
-				<admin-signup>
+		<div route='/admin-signup'>
+			<admin-signup>
 
-			<div route='/checkout'>
-				<checkout>
+		<div route='/checkout'>
+			<checkout>
 
-			<div route='/order-success'>
-				<order-success>
+		<div route='/order-success'>
+			<order-success>
 
-			<div route='/dashboard'>
-				<dashboard>
+		<div route='/dashboard'>
+			<dashboard>
 
-			<div route='/product-upload'>
-				<product-upload>
+		<div route='/product-upload'>
+			<product-upload>
 
-			<div>
-				<single-product route='/product/:id'>
+		<div>
+			<single-product route='/product/:id'>
 
 imba.mount <app>
 

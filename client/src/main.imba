@@ -18,38 +18,38 @@ tag app
 		<div route="/">
 			<home>
 
-		<div route="/shop">
+		<div route="/shop/">
 			<shop>
 
-		<div route='/signup'>
+		<div route='/signup/'>
 			<signup>
 
-		<div route='/admin-signup'>
+		<div route='/admin-signup/'>
 			<admin-signup>
 
-		<div route='/login'>
+		<div route='/login/'>
 			<login>
 
-		<div route='/admin-login'>
+		<div route='/admin-login/'>
 			<admin-login>
 
-		<div route='/admin-signup'>
+		<div route='/admin-signup/'>
 			<admin-signup>
 
-		<div route='/checkout'>
+		<div route='/checkout/'>
 			<checkout>
 
-		<div route='/order-success'>
+		<div route='/order-success/'>
 			<order-success>
 
-		<div route='/dashboard'>
+		<div route='/dashboard/'>
 			<dashboard>
 
-		<div route='/product-upload'>
+		<div route='/product-upload/'>
 			<product-upload>
 
 		<div>
-			<single-product route='/product/:id'>
+			<single-product route='/product/:id/'>
 
 imba.mount <app>
 

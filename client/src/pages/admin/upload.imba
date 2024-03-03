@@ -76,8 +76,8 @@ tag product-upload
 				<button.btn>
 					!startLoading ? <span[fw: 600 fs: 15px] @click=handleAddProduct> "Add Product" : <img[s: 25px] src="../../../public/image/loading.webp">
 
-				if errorNotification  
-					show-notification('error', errorNotification, "Error while sign up")
-				else 
-					show-notification('success', successNotification, "You have successfully signed up")
+					if errorNotification  
+						show-notification('error', errorNotification, "Error while product upload")
+					else 
+						show-notification('success', successNotification, "You have successfully upload a product")
 

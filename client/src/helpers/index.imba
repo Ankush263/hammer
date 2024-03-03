@@ -19,7 +19,7 @@ export def fetchToken()
 
 export def goto(redirect-url)
 	if fetchToken() === "" || fetchToken() === undefined
-		imba.router.url.href = "http://{imba.router.url.host}" + redirect-url
+		imba.router.url.href = "https://{imba.router.url.host}" + redirect-url
 
 export def checkUser()
 	const user = await getMe(fetchToken())

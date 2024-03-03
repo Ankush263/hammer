@@ -47,6 +47,7 @@ tag admin-login
 			<div>
 		<section>
 			<span.header-txt> "Admin Login"
+			<span[fs: 12px fw: 600 p: 5px]> "We recommend using email: ankushbanik263@gmail.com and password: test1234 to see the full functionality" 
 			<div.login-box>
 
 				<div.input-box>

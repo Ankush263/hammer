@@ -18,7 +18,7 @@ tag dashboard
 		try
 			const myRole = await checkUser!
 			if myRole !== "admin"
-				window.location.replace("http://{imba.router.url.host}/admin-login")
+				window.location.replace("https://{imba.router.url.host}/admin-login")
 			else
 				const sell = await getTotalSell(fetchToken())
 				const total = await getTotalNumberOfListedProduct(fetchToken())

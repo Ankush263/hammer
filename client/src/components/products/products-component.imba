@@ -13,7 +13,7 @@ tag all-products
 
 	css
 		.top-seller-header fs: 22px fw: 800 mb: 50px mt: 50px d: flex fld: column ai: center
-		.sm-img-box d: flex fld: column ai: center rd: 10px
+		.sm-img-box d: flex fld: column ai: center rd: 10px cursor: pointer
 		.desc-text d: flex fld: column mt: 5px
 		.desc-txt-title fs: 10px fs@768: 12px fs@1024: 15px fw: 800
 		.desc-txt-light fs: 12px fs@1024: 15px mt: 3px fw: 500

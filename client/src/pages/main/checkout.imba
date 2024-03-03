@@ -11,7 +11,7 @@ tag checkout
 				allProducts.push({ product: product.product._id, quantity: product.quantity })
 			
 			await createOrder fetchToken!, { products: allProducts }
-			window.location.replace("http://{imba.router.url.host}/order-success")
+			window.location.replace("https://{imba.router.url.host}/order-success")
 		catch error
 			console.log error
 
@@ -33,5 +33,5 @@ tag checkout
 
 			<div.btn>
 				<span> "Credit / Debit Card "
-				<img[s: 30px ml: auto] src="../../../public/svg/right.svg" >
+				<img[s: 30px ml: auto] @click=handleCreateOrder src="../../../public/svg/right.svg" >
 

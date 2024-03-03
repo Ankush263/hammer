@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const URL = 'http://localhost:3000'
+# const URL = 'http://localhost:3000'
+const URL = 'https://hammer-wzda.onrender.com'
 
 const AUTH_URL = "{URL}/api/v1/user"
 const ORDER_URL = "{URL}/api/v1/order"

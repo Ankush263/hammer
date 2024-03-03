@@ -2,7 +2,7 @@
 	"name": "server",
 	"scripts": {
 		"dev": "imba -w server.imba",
-		"build": "npx imba build server.imba",
+		"build": "imba build server.imba",
 		"preview": "node dist/server.js",
 		"prod": "npx pm2 start dist/server.js"
 	},
@@ -19,8 +19,7 @@
 		"multer-s3": "^2.10.0",
 		"uuid": "^3.2.1",
 		"validator": "^13.11.0",
-		"xss-clean": "^0.1.4",
-		"imba": "^2.0.0-alpha.234"
+		"xss-clean": "^0.1.4"
 	},
 	"devDependencies": {
 		"@types/bcryptjs": "^2.4.6",

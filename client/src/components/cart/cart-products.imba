@@ -1,5 +1,5 @@
 import { addToCart, removeFromCart } from "../../api/index.imba"
-import { fetchToken } from "../../helpers/index.imba"
+import { fetchToken, setLoadingCart } from "../../helpers/index.imba"
 
 tag cart-products
 	prop quantity = 1
@@ -10,20 +10,32 @@ tag cart-products
 	prop fetch
 
 	def handleAdd
-		const details = {
-			productId: id,
-		}
-		await addToCart fetchToken!, details
-		fetch!
-		imba.commit!
+		setLoadingCart(yes)
+		try
+			const details = {
+				productId: id,
+			}
+			await addToCart fetchToken!, details
+			fetch!
+			imba.commit!
+			setLoadingCart(no)
+		catch error
+			setLoadingCart(no)
+			console.log error
 
 	def handleSubtract
-		const details = {
-			productId: id,
-		}
-		await removeFromCart fetchToken!, details
-		fetch!
-		imba.commit!
+		setLoadingCart(yes)
+		try
+			const details = {
+				productId: id,
+			}
+			await removeFromCart fetchToken!, details
+			fetch!
+			imba.commit!
+			setLoadingCart(no)
+		catch error
+			setLoadingCart(no)
+			console.log error
 
 	css
 		.container h: 6.5em bdb: 2px solid black d: flex jc: space-around ai: center p: 10px

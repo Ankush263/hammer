@@ -1,4 +1,4 @@
-import { handleCart, fetchToken } from '../../helpers/index.imba' 
+import { handleCart, fetchToken, loadingCart } from '../../helpers/index.imba' 
 import { getMyCart } from "../../api/index.imba"
 import "./cart-products.imba"
 
@@ -35,6 +35,8 @@ tag shopping-cart
 				<span.header-txt> "Get 2 shirts with 15% off | use code ANKUSH"
 
 			<div[h: 60vh overflow: scroll]>
+				loadingCart and <div[w: 100% h: 100% d: flex jc: center ai: center]>
+					<img[s: 50px] src="../../../public/image/loading.webp">
 				if items and items.length > 0
 					for product in items
 						<cart-products fetch=fetch id=product.product._id quantity=product.quantity price=product.total image=product.product.image name=product.product.name>

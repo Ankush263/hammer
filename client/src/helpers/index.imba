@@ -2,6 +2,7 @@ import { getMe } from "../api/index.imba"
 
 export let openCart = no
 export let showDropdown = yes
+export let loadingCart = no
 
 export def handleCart()
 	openCart = !openCart
@@ -24,3 +25,8 @@ export def goto(redirect-url)
 export def checkUser()
 	const user = await getMe(fetchToken())
 	return user.data.data.role
+
+export def setLoadingCart(val)
+	console.log "running...", val
+	loadingCart = val
+	

@@ -3,11 +3,14 @@ import { show-notification } from "../../components/notification/notification.im
 
 let successNotification = no
 let errorNotification = no
+let startLoading = no
 
 tag signup
 
 	def handleCreate
+		startLoading = yes
 		try 
+			setTimeout(&, 5000) do window.alert("Since this application deployed on a free service, it might take 2 - 4 mins to fetch the data. sit back and relax☺️☺️")
 			const response = await signup({
 				firstName: firstName,
 				lastName: lastName,
@@ -63,7 +66,8 @@ tag signup
 					<input type="password" bind=password placeholder="Enter Password" />
 
 				<div.btn>
-					<button @click=handleCreate> "Create"
+					<button @click=handleCreate> 
+						!startLoading ? <span> "Create" : <img[s: 25px] src="../../../public/image/loading.webp">
 
 				<a.bottom-txt route-to='/login'> "Login to your account"
 

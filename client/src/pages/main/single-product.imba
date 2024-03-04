@@ -2,6 +2,7 @@ import { getSingleProduct, addToCart } from "../../api/index.imba"
 import { fetchToken, handleCart } from "../../helpers/index.imba"
 
 let amount = 1
+let startLoading = no
 
 tag single-product
 
@@ -10,15 +11,18 @@ tag single-product
 
 	def handleAddToCart
 		try
+			startLoading = yes
 			const details = 
 				productId: data._id
 				quantity: amount
 
 			await addToCart fetchToken!, details
-			
+
+			startLoading = no
 			handleCart!
 
 		catch error
+			startLoading = no
 			console.log error
 			if error.response.data.message[0] === "You don't have permission to perform this action"
 				window.location.replace("https://{imba.router.url.host}/login")
@@ -58,5 +62,5 @@ tag single-product
 					<img[s: 15px] @click=handleAdd src="../../../public/svg/plus-icon.svg">
 
 				<div.cart-btn>
-					<span[fw: 700 fs: 20px cursor: pointer] @click=handleAddToCart> "Add To Cart"
+					!startLoading ? <span[fw: 700 fs: 20px cursor: pointer] @click=handleAddToCart> "Add To Cart" : <img[s: 25px] src="../../../public/image/loading.webp">
 

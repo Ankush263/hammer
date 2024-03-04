@@ -19,6 +19,7 @@ tag signup
 			})
 
 			successNotification = yes
+			startLoading = no
 			const token = response..data..token
 			const expire = new Date!.getTime! + 1296000000
 			typeof token !== "undefined" and window.localStorage.setItem("Token", JSON.stringify value: "{token}", expires: expire)
@@ -26,6 +27,7 @@ tag signup
 			setTimeout(&, 1000) do successNotification = no
 
 		catch error
+			startLoading = no
 			errorNotification = yes
 			console.log(error)
 			setTimeout(&, 1000) do errorNotification = no
